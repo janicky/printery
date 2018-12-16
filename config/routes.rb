@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  use_doorkeeper
+  devise_for :users
+  namespace :api do
+    use_doorkeeper
+  end
   # scope module: :api, defaults: { format: :json }, path: "api" do
   #   scope module: :v1 do
   #     devise_for :users, controllers: {
