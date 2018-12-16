@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end
   scope module: :api, defaults: { format: :json }, path: "api" do
     devise_for :users, controllers: {
-      registrations: "api/v1/users/registrations",
+      registrations: "api/users/registrations",
     }, skip: [:sessions, :password]
   end
 end
