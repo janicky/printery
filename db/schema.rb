@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_16_190009) do
+ActiveRecord::Schema.define(version: 2018_12_16_193319) do
+
+  create_table "color_palettes", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
