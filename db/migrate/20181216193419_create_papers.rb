@@ -4,8 +4,6 @@ class CreatePapers < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :grammage
       t.decimal :price
-
-      t.timestamps
     end
   end
 end
