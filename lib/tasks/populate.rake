@@ -82,5 +82,14 @@ namespace :db do
         color_palette: ColorPalette.find(ColorPalette.pluck(:id).sample),
       )
     end
+
+    30.times do |i|
+      Operation.create(
+        order: Order.find(Order.pluck(:id).sample),
+        machine: Machine.find(Machine.pluck(:id).sample),
+        status: [0, 1, 2, 3].sample,
+        priority: i,
+      )
+    end
   end
 end
