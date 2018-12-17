@@ -1,6 +1,6 @@
 class Api::CompaniesController < ApplicationController
   # before_action :doorkeeper_authorize!
-  before_action :set_company, only: [:show]
+  before_action :set_company, only: [:show, :update]
 
   def index
     json_response Company.all
@@ -16,6 +16,14 @@ class Api::CompaniesController < ApplicationController
       json_response company
     else
       json_response({ errors: company.errors }, :bad_request)
+    end
+  end
+
+  def update
+    if @company.update(company_params)
+      json_response @company
+    else
+      json_response({ errors: company.errors}, :bad_request)
     end
   end
 
