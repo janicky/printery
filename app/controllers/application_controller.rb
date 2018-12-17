@@ -6,6 +6,10 @@ class ApplicationController < ActionController::API
 
   respond_to :json
 
+  def doorkeeper_unauthorized_render_options(*)
+    { json: { error: "Not authorized" } }
+  end
+
   protected
 
   def configure_permitted_parameters
