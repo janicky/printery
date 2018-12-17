@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     devise_for :users, controllers: {
       registrations: "api/users/registrations",
     }, skip: [:sessions, :password, :registrations]
+
+    # Endpoints
+    resources :companies
   end
 end
