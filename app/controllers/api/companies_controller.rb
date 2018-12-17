@@ -23,7 +23,7 @@ class Api::CompaniesController < ApplicationController
     if @company.update(company_params)
       json_response @company
     else
-      json_response({ errors: company.errors}, :bad_request)
+      json_response({ errors: company.errors }, :bad_request)
     end
   end
 
