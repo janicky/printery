@@ -52,9 +52,9 @@ namespace :db do
     ]
     paper_dimensions.each do |paper|
       PaperSize.create(
-        name: paper.name,
-        width: paper.width,
-        height: paper.height,
+        name: paper[:name],
+        width: paper[:width],
+        height: paper[:height],
         multiplier: Faker::Commerce.price(0.8...4),
       )
     end
