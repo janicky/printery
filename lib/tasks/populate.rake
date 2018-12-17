@@ -22,11 +22,20 @@ namespace :db do
       )
     end
 
-    color_palettes = %w[CMYK CMYK+P354 CMYK+P8381 CMYK+REFLEX P2756+P375 P8085+K+Y CMYK+5KOL]
-    color_palettes.each do |color_name|
+    color_palette_names = %w[CMYK CMYK+P354 CMYK+P8381 CMYK+REFLEX P2756+P375 P8085+K+Y CMYK+5KOL]
+    color_palette_names.each do |color_name|
       ColorPalette.create(
         name: color_name,
         price: Faker::Commerce.price(0.8...1.5),
+      )
+    end
+
+    paper_names = %w[Alaska GC1 GRAFION SAMPACK PRIMA\ BOX Kreda LPET]
+    10.times do
+      Paper.create(
+        name: paper_names.sample,
+        grammage: Faker::Number.between(200, 400),
+        price: Faker::Commerce.price(0.9...1.6),
       )
     end
   end
