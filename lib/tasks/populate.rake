@@ -73,7 +73,6 @@ namespace :db do
       count = [*500...100000].sample
       Order.create(
         company: Company.find(Company.pluck(:id).sample),
-        machine: Machine.find(Machine.pluck(:id).sample),
         price: Faker::Commerce.price(0.2...5) * count,
         count: count,
         deadline: Time.current + [*7...30].sample.days,
