@@ -26,7 +26,7 @@ namespace :db do
     color_palette_names.each do |color_name|
       ColorPalette.create(
         name: color_name,
-        price: Faker::Commerce.price(2...4.5),
+        price: Faker::Commerce.price(0.04...0.2),
       )
     end
 
@@ -35,7 +35,7 @@ namespace :db do
       Paper.create(
         name: paper_names.sample,
         grammage: Faker::Number.between(200, 400),
-        price: Faker::Commerce.price(0.5...2),
+        price: Faker::Commerce.price(0.05...1),
       )
     end
 
@@ -55,7 +55,7 @@ namespace :db do
         name: paper[:name],
         width: paper[:width],
         height: paper[:height],
-        multiplier: Faker::Commerce.price(0.8...4),
+        multiplier: Faker::Commerce.price(0.1...2),
       )
     end
 
@@ -66,6 +66,21 @@ namespace :db do
         name: "#{letters.sample}#{Faker::Number.between(1, 10)}",
         type: machine_types.sample,
         since_cleaning: Faker::Number.between(0, 300),
+      )
+    end
+
+    20.times do
+      count = [*500...100000].sample
+      Order.create(
+        company: Company.find(Company.pluck(:id).sample),
+        machine: Machine.find(Machine.pluck(:id).sample),
+        price: Faker::Commerce.price(0.2...5) * count,
+        count: count,
+        deadline: Time.current + [*7...30].sample.days,
+        description: Faker::Lorem.sentence,
+        paper_size: PaperSize.find(PaperSize.pluck(:id).sample),
+        paper: Paper.find(Paper.pluck(:id).sample),
+        color_palette: ColorPalette.find(ColorPalette.pluck(:id).sample),
       )
     end
   end
