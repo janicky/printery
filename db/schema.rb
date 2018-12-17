@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_17_091100) do
+ActiveRecord::Schema.define(version: 2018_12_17_091322) do
 
   create_table "color_palettes", force: :cascade do |t|
     t.string "name"
@@ -114,6 +114,15 @@ ActiveRecord::Schema.define(version: 2018_12_17_091100) do
     t.string "name"
     t.integer "grammage"
     t.decimal "price"
+  end
+
+  create_table "release_receipts", force: :cascade do |t|
+    t.integer "order_id"
+    t.datetime "release_date"
+    t.integer "user_id"
+    t.decimal "price"
+    t.index ["order_id"], name: "index_release_receipts_on_order_id"
+    t.index ["user_id"], name: "index_release_receipts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
