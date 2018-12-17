@@ -58,5 +58,15 @@ namespace :db do
         multiplier: Faker::Commerce.price(0.8...4),
       )
     end
+
+    machine_types = %w[printer cutter gluing refinment]
+    letters = ("A"..."Z").to_a
+    10.times do
+      Machine.create(
+        name: "#{letters.sample}#{Faker::Number.between(1, 10)}",
+        type: machine_types.sample,
+        since_cleaning: Faker::Number.between(0, 300),
+      )
+    end
   end
 end
