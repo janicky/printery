@@ -10,13 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_16_193701) do
+ActiveRecord::Schema.define(version: 2018_12_17_090411) do
 
   create_table "color_palettes", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "companies", force: :cascade do |t|
@@ -69,21 +67,34 @@ ActiveRecord::Schema.define(version: 2018_12_16_193701) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "company_id"
+    t.decimal "price"
+    t.integer "count"
+    t.date "deadline"
+    t.string "description"
+    t.integer "paper_size_id"
+    t.integer "paper_id"
+    t.integer "color_palette_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_palette_id"], name: "index_orders_on_color_palette_id"
+    t.index ["company_id"], name: "index_orders_on_company_id"
+    t.index ["paper_id"], name: "index_orders_on_paper_id"
+    t.index ["paper_size_id"], name: "index_orders_on_paper_size_id"
+  end
+
   create_table "paper_sizes", force: :cascade do |t|
     t.string "name"
     t.integer "width"
     t.integer "height"
     t.decimal "multiplier"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "papers", force: :cascade do |t|
     t.string "name"
     t.integer "grammage"
     t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
