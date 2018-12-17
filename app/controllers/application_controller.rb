@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::API
+  include Response
+  include ExceptionHandler
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   respond_to :json
