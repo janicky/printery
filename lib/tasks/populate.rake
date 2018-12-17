@@ -21,5 +21,13 @@ namespace :db do
         address: Faker::Address.full_address,
       )
     end
+
+    color_palettes = %w[CMYK CMYK+P354 CMYK+P8381 CMYK+REFLEX P2756+P375 P8085+K+Y CMYK+5KOL]
+    color_palettes.each do |color_name|
+      ColorPalette.create(
+        name: color_name,
+        price: Faker::Commerce.price(0.8...1.5),
+      )
+    end
   end
 end
