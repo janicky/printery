@@ -1,6 +1,6 @@
 class Api::CompaniesController < ApplicationController
   # before_action :doorkeeper_authorize!
-  before_action :set_company, only: [:show, :update]
+  before_action :set_company, only: [:show, :update, :destroy]
 
   def index
     json_response Company.all
@@ -25,6 +25,10 @@ class Api::CompaniesController < ApplicationController
     else
       json_response({ errors: company.errors}, :bad_request)
     end
+  end
+
+  def destroy
+    json_response @company.destroy
   end
 
   private
