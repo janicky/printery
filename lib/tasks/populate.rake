@@ -92,10 +92,12 @@ namespace :db do
       )
     end
 
-    Order.where(status: 3).each do |order|
+    Order.all.each do |order|
+      next unless order.status == 3
+
       ReleaseReceipt.create(
         order: order,
-        release_date: Time.current + [*2...10].hours,
+        release_date: Time.current + [*2...10].sample.hours,
         user: User.find(User.pluck(:id).sample),
         price: order.price,
       )
