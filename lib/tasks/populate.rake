@@ -13,5 +13,13 @@ namespace :db do
         password: Faker::Internet.password,
       )
     end
+
+    20.times do
+      Company.create(
+        name: Faker::SiliconValley.company,
+        tax_number: Faker::Number.number(10),
+        address: Faker::Address.full_address,
+      )
+    end
   end
 end
