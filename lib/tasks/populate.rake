@@ -26,7 +26,7 @@ namespace :db do
     color_palette_names.each do |color_name|
       ColorPalette.create(
         name: color_name,
-        price: Faker::Commerce.price(0.8...1.5),
+        price: Faker::Commerce.price(2...4.5),
       )
     end
 
@@ -35,7 +35,27 @@ namespace :db do
       Paper.create(
         name: paper_names.sample,
         grammage: Faker::Number.between(200, 400),
-        price: Faker::Commerce.price(0.9...1.6),
+        price: Faker::Commerce.price(0.5...2),
+      )
+    end
+
+    paper_dimensions = [
+      { name: "A10", width: 26, height: 37 },
+      { name: "A9", width: 37, height: 52 },
+      { name: "A8", width: 52, height: 74 },
+      { name: "A7", width: 74, height: 105 },
+      { name: "A4", width: 210, height: 297 },
+      { name: "A2", width: 420, height: 594 },
+      { name: "A0", width: 841, height: 1189 },
+      { name: "B0", width: 1000, height: 1414 },
+      { name: "C0", width: 917, height: 1297 },
+    ]
+    paper_dimensions.each do |paper|
+      PaperSize.create(
+        name: paper.name,
+        width: paper.width,
+        height: paper.height,
+        multiplier: Faker::Commerce.price(0.8...4),
       )
     end
   end
