@@ -91,5 +91,14 @@ namespace :db do
         priority: i,
       )
     end
+
+    Order.where(status: 3).each do |order|
+      ReleaseReceipt.create(
+        order: order,
+        release_date: Time.current + [*2...10].hours,
+        user: User.find(User.pluck(:id).sample),
+        price: order.price,
+      )
+    end
   end
 end
