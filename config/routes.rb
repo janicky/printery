@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     }, skip: [:sessions, :password, :registrations]
 
     # Endpoints
+    get "/me", to: "users#me"
     resources :companies
   end
 end
