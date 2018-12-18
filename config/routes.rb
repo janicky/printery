@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     # Endpoints
     get "/me", to: "users#me"
+    resources :users
     resources :companies
   end
 end

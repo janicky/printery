@@ -18,6 +18,12 @@ class ApplicationController < ActionController::API
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
+  def authorize_admin
+    if !current_resource_owner || !current_resource_owner[:admin]
+      json_response({ error: "Not authorized (require admin privileges)" }, :unauthorized)
+    end
+  end
+
   private
 
   def current_resource_owner
