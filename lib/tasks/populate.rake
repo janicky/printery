@@ -5,6 +5,13 @@ namespace :db do
   task populate: :environment do
     Rake::Task["db:reset"].invoke if Rails.env.development?
 
+    User.create(
+      first_name: "Example",
+      last_name: "Example",
+      email: "example@example.com",
+      password: "example",
+    )
+
     5.times do
       User.create(
         first_name: Faker::Name.first_name,
