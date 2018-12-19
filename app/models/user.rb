@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { minimum: 3, maximum: 50 }
   validates :password, presence: true, on: :create
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  scope :alive, -> { where.not(last_activity: nil) }
 end
