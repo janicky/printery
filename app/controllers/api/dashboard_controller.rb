@@ -9,6 +9,7 @@ module Api
       data[:count] = {
         not_started: Order.not_started.count,
         in_progress: Order.in_progress.count,
+        canceled: Order.canceled.count,
         finished: Order.finished.count,
       }
       json_response data
