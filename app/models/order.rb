@@ -17,6 +17,11 @@ class Order < ApplicationRecord
   validates :paper, presence: true
   validates :color_palette, presence: true
 
+  scope :not_started, -> { all.select { |order| order.status == 0 } }
+  scope :in_progress, -> { all.select { |order| order.status == 1 } }
+  scope :canceled, -> { all.select { |order| order.status == 2 } }
+  scope :finished, -> { all.select { |order| order.status == 3 } }
+
   def status
     status = 0
     return status if operations.count == 0
