@@ -5,7 +5,7 @@ module Api
     before_action :set_order, only: [:show, :update, :destroy]
 
     def index
-      json_response Order.all
+      json_response Order.all.as_json(include: { company: {} }, methods: [:status])
     end
 
     def show
