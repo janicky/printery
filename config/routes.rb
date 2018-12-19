@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     # Endpoints
     get "/me", to: "users#me"
+    get "/dashboard", to: "dashboard#index"
     resources :users
     resources :companies
   end
