@@ -1,5 +1,6 @@
 class Api::CompaniesController < ApplicationController
-  # before_action :doorkeeper_authorize!
+  before_action :doorkeeper_authorize!
+  before_action :authorize_admin, only: [:destroy]
   before_action :set_company, only: [:show, :update, :destroy]
 
   def index
