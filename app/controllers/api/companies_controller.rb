@@ -8,7 +8,7 @@ class Api::CompaniesController < ApplicationController
   end
 
   def show
-    json_response @company
+    json_response @company.as_json(include: { orders: { include: { company: {} } } })
   end
 
   def create
