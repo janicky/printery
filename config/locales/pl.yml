@@ -1,0 +1,21 @@
+pl:
+  activerecord:
+    errors:
+      models:
+        company:
+          attributes:
+            name:
+              blank: 'nie może być pusta'
+              too_short: 'jest za krótka'
+              too_long: 'jest zbyt długa'
+              taken: 'jest zajęta'
+            address:
+              blank: 'nie może być pusty'
+              too_short: 'jest za krótki'
+              too_long: 'jest zbyt długi'
+            tax_number:
+              blank: 'nie może być pusty'
+              too_short: 'jest za krótki'
+              too_long: 'jest zbyt długi'
+              taken: 'jest już używany'
+              not_a_number: 'jest niepoprawny (tylko cyfry)'
