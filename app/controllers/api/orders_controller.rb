@@ -9,7 +9,13 @@ module Api
     end
 
     def show
-      json_response @order
+      json_response @order.as_json(
+        include: {
+          company: {}, paper: {}, paper_size: {},
+          color_palette: {}
+        },
+        methods: [:status],
+      )
     end
 
     def create
